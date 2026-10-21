@@ -1,0 +1,291 @@
+{
+    "aid": "yruz.one",
+    "name": "YRUZ",
+    "description": "Fast pay-per-call APIs for AI agents over x402 (v1 and v2), USDC on Solana or Base, no account or API key: crypto tools, web and domain tools, social data, developer utilities and a 90+ tool toolkit. 269 paid operations.",
+    "url": "https://yruz.one/.well-known/apis.json",
+    "type": "Index",
+    "image": "https://yruz.one/content/themes/yruz/images/favicon.png",
+    "created": "2026-10-21",
+    "modified": "2026-10-20",
+    "specificationVersion": "0.19",
+    "tags": [
+        "x402",
+        "AI agents",
+        "crypto",
+        "web scraping",
+        "domain intelligence",
+        "pay per call",
+        "USDC",
+        "Solana",
+        "Base"
+    ],
+    "apis": [
+        {
+            "aid": "yruz.one:crypto",
+            "name": "YRUZ Crypto Tools API",
+            "description": "Live crypto prices for up to 25 coins or Solana mints per call, trending coins with top gainers and losers, Solana token rug-pull check with a 0-100 risk score, Solana wallet portfolio in USD, Solana transaction decoding and current Solana priority fees and Base gas. Market data cached at most 60 s. From 0.002 USDC per call.",
+            "humanURL": "https://yruz.one/api/crypto",
+            "baseURL": "https://yruz.one",
+            "tags": [
+                "crypto",
+                "cryptocurrency prices",
+                "market data",
+                "Solana tokens",
+                "token security",
+                "rug check",
+                "wallet portfolio",
+                "blockchain",
+                "x402",
+                "x402 v1",
+                "x402 v2",
+                "pay per call",
+                "USDC",
+                "Solana",
+                "Base",
+                "AI agents",
+                "no API key"
+            ],
+            "properties": [
+                {
+                    "type": "Catalogue",
+                    "url": "https://yruz.one/api/crypto"
+                },
+                {
+                    "type": "OpenAPI",
+                    "url": "https://yruz.one/openapi.json"
+                },
+                {
+                    "type": "x402",
+                    "url": "https://yruz.one/.well-known/x402"
+                },
+                {
+                    "type": "Documentation",
+                    "url": "https://yruz.one/llms.txt"
+                },
+                {
+                    "type": "Pricing",
+                    "url": "https://yruz.one/x402.php"
+                }
+            ],
+            "contact": [
+                {
+                    "FN": "YRUZ",
+                    "email": "zanto@yruz.one",
+                    "url": "https://yruz.one"
+                }
+            ]
+        },
+        {
+            "aid": "yruz.one:agent-tools",
+            "name": "YRUZ Agent Tools API",
+            "description": "Network tools an agent cannot run from a sandbox: any web page as clean Markdown (/api/extract), link preview cards (/api/unfurl), domain intel with DNS, SPF, DMARC, DKIM, RDAP and TLS (/api/domain), broken-link check (/api/links), x402 endpoint validation (/api/x402-check), uptime with timings (/api/uptime), USDC wallet balance (/api/wallet) and a scored website audit (/api/audit).",
+            "humanURL": "https://yruz.one/x402.php",
+            "baseURL": "https://yruz.one",
+            "tags": [
+                "web scraping",
+                "html to markdown",
+                "link preview",
+                "domain lookup",
+                "email security",
+                "seo audit",
+                "uptime monitoring",
+                "x402 validator",
+                "x402",
+                "x402 v1",
+                "x402 v2",
+                "pay per call",
+                "USDC",
+                "Solana",
+                "Base",
+                "AI agents",
+                "no API key"
+            ],
+            "properties": [
+                {
+                    "type": "OpenAPI",
+                    "url": "https://yruz.one/openapi.json"
+                },
+                {
+                    "type": "x402",
+                    "url": "https://yruz.one/.well-known/x402"
+                },
+                {
+                    "type": "Documentation",
+                    "url": "https://yruz.one/llms.txt"
+                },
+                {
+                    "type": "Pricing",
+                    "url": "https://yruz.one/x402.php"
+                }
+            ],
+            "contact": [
+                {
+                    "FN": "YRUZ",
+                    "email": "zanto@yruz.one",
+                    "url": "https://yruz.one"
+                }
+            ]
+        },
+        {
+            "aid": "yruz.one:social",
+            "name": "YRUZ Social Data API",
+            "description": "Public data of the YRUZ social network: one-call search across glossary, Q&A and articles, newest posts, member profiles and their posts, forum threads, Q&A, articles as Markdown, pages and what is trending. Citable URLs. From 0.002 USDC.",
+            "humanURL": "https://yruz.one/x402.php",
+            "baseURL": "https://yruz.one",
+            "tags": [
+                "social media data",
+                "community content",
+                "search",
+                "articles",
+                "forums",
+                "x402",
+                "x402 v1",
+                "x402 v2",
+                "pay per call",
+                "USDC",
+                "Solana",
+                "Base",
+                "AI agents",
+                "no API key"
+            ],
+            "properties": [
+                {
+                    "type": "OpenAPI",
+                    "url": "https://yruz.one/openapi.json"
+                },
+                {
+                    "type": "x402",
+                    "url": "https://yruz.one/.well-known/x402"
+                },
+                {
+                    "type": "Documentation",
+                    "url": "https://yruz.one/llms.txt"
+                },
+                {
+                    "type": "Pricing",
+                    "url": "https://yruz.one/x402.php"
+                }
+            ],
+            "contact": [
+                {
+                    "FN": "YRUZ",
+                    "email": "zanto@yruz.one",
+                    "url": "https://yruz.one"
+                }
+            ]
+        },
+        {
+            "aid": "yruz.one:utilities",
+            "name": "YRUZ Developer Utilities API",
+            "description": "18 developer utilities per call: hash, HMAC, UUID, secure random, passwords, time zones, base64, URL encoding, slugs, word count, case conversion, JSON validation, JWT decode, HTML to Markdown, color conversion, email and DNS checks. 0.002 USDC per call.",
+            "humanURL": "https://yruz.one/api/util",
+            "baseURL": "https://yruz.one",
+            "tags": [
+                "developer tools",
+                "hashing",
+                "uuid",
+                "dns",
+                "email validation",
+                "json",
+                "jwt",
+                "x402",
+                "x402 v1",
+                "x402 v2",
+                "pay per call",
+                "USDC",
+                "Solana",
+                "Base",
+                "AI agents",
+                "no API key"
+            ],
+            "properties": [
+                {
+                    "type": "Catalogue",
+                    "url": "https://yruz.one/api/util"
+                },
+                {
+                    "type": "OpenAPI",
+                    "url": "https://yruz.one/openapi.json"
+                },
+                {
+                    "type": "x402",
+                    "url": "https://yruz.one/.well-known/x402"
+                },
+                {
+                    "type": "Documentation",
+                    "url": "https://yruz.one/llms.txt"
+                },
+                {
+                    "type": "Pricing",
+                    "url": "https://yruz.one/x402.php"
+                }
+            ],
+            "contact": [
+                {
+                    "FN": "YRUZ",
+                    "email": "zanto@yruz.one",
+                    "url": "https://yruz.one"
+                }
+            ]
+        },
+        {
+            "aid": "yruz.one:toolkit",
+            "name": "YRUZ Toolkit API",
+            "description": "Every tool of the YRUZ Toolkit as an API: 90+ tools (SSL lookup, HTTP headers, HTTP/2, Brotli, redirects, meta tags, hosting, text, encoders, hash and link generators) and 1,700+ data, time and color converters through one convert endpoint. 0.002 USDC per call.",
+            "humanURL": "https://yruz.one/toolkit",
+            "baseURL": "https://yruz.one",
+            "tags": [
+                "web tools",
+                "ssl checker",
+                "converters",
+                "text tools",
+                "encoders",
+                "x402",
+                "x402 v1",
+                "x402 v2",
+                "pay per call",
+                "USDC",
+                "Solana",
+                "Base",
+                "AI agents",
+                "no API key"
+            ],
+            "properties": [
+                {
+                    "type": "Catalogue",
+                    "url": "https://yruz.one/api/toolkit"
+                },
+                {
+                    "type": "OpenAPI",
+                    "url": "https://yruz.one/openapi.json"
+                },
+                {
+                    "type": "x402",
+                    "url": "https://yruz.one/.well-known/x402"
+                },
+                {
+                    "type": "Documentation",
+                    "url": "https://yruz.one/llms.txt"
+                },
+                {
+                    "type": "Pricing",
+                    "url": "https://yruz.one/x402.php"
+                }
+            ],
+            "contact": [
+                {
+                    "FN": "YRUZ",
+                    "email": "zanto@yruz.one",
+                    "url": "https://yruz.one"
+                }
+            ]
+        }
+    ],
+    "maintainers": [
+        {
+            "FN": "YRUZ",
+            "email": "zanto@yruz.one",
+            "url": "https://yruz.one"
+        }
+    ]
+}
