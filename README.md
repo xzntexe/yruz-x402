@@ -1,6 +1,6 @@
 # YRUZ x402 API
 
-Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on Solana or Base** (same price on both), no account, no API key, no signup. 269 paid operations.
+Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on Solana or Base** (same price on both), no account, no API key, no signup. 275 paid operations, every one answering both x402 v2 (PAYMENT-REQUIRED header) and x402 v1 (JSON body), with Base and Solana offers in each 402.
 
 - Discovery manifest: <https://yruz.one/.well-known/x402>
 - OpenAPI 3.1 (with `x-payment-info`): <https://yruz.one/openapi.json> (x402 operations copied to [`openapi.json`](openapi.json))
