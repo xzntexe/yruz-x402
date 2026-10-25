@@ -14,6 +14,9 @@ Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on S
 |---|---|---|
 | [`/api/audit`](https://yruz.one/api/examples?tool=audit) | Website audit: TLS, security headers, HTTP/2-3, SEO and AI-agent readiness, scored with fixes | 0.01 |
 | [`/api/extract`](https://yruz.one/api/examples?tool=extract) | Any web page as clean Markdown (code blocks, tables, lists) with metadata | 0.005 |
+| [`/api/enrich`](https://yruz.one/api/examples?tool=enrich) | Company profile from a domain: name, logo, socials, emails, phones, email provider, tech stack, registration | 0.01 |
+| [`/api/safety`](https://yruz.one/api/examples?tool=safety) | Is a link safe to open, sign or pay? Redirects, domain age, look-alikes, brand impersonation, wallet drainers | 0.005 |
+| [`/api/weather`](https://yruz.one/api/examples?tool=weather) | Current weather, 48 h hourly and 7-day forecast, US alerts, by place name or lat/lon | 0.003 |
 | [`/api/domain`](https://yruz.one/api/examples?tool=domain) | DNS, SPF/DMARC/DKIM/MTA-STS, RDAP registration and TLS of a domain, scored | 0.01 |
 | [`/api/crypto/token`](https://yruz.one/api/examples?tool=crypto-token) | Solana token rug-pull check: authorities, holders, liquidity, risk score | 0.005 |
 
@@ -25,11 +28,15 @@ The same tools are an MCP server, no auth: **`https://yruz.one/mcp/x402`** (stre
 Payments follow the [x402 MCP transport](https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/mcp.md):
 an unpaid `tools/call` returns `isError` with the `PaymentRequired` in `structuredContent`; repeat it with the signed
 `PaymentPayload` in `params._meta["x402/payment"]`; the receipt comes back in `result._meta["x402/payment-response"]`.
-`get_example` is free. Server card: <https://yruz.one/.well-known/mcp/x402-server-card.json>.
+`get_example` is free. Listed in the official MCP Registry as `io.github.xzntexe/yruz-x402`. Server card: <https://yruz.one/.well-known/mcp/x402-server-card.json>.
 
-Tools: `site_audit`, `web_extract`, `link_preview`, `domain_intel`, `broken_links`, `uptime_check`, `x402_endpoint_check`,
+Tools: `site_audit`, `web_extract`, `company_enrich`, `url_safety_check`, `weather_forecast`, `link_preview`, `domain_intel`, `broken_links`, `uptime_check`, `x402_endpoint_check`,
 `wallet_balance`, `crypto_price`, `crypto_trending`, `solana_token_check`, `solana_portfolio`, `solana_tx_explain`,
 `network_fees`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
+
+## Bad input is free
+
+Every refused call (HTTP 400/404/422) is free and says how to succeed: `charged: false`, the endpoint, its parameters, a valid example call, the price and the docs. Unknown paths suggest the closest tool (`/api/extractt` -> `/api/extract`).
 
 ## How to pay
 
