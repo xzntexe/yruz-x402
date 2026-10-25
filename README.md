@@ -8,6 +8,29 @@ Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on S
 - Agent docs: <https://yruz.one/llms.txt> · <https://yruz.one/auth.md> · live prices and readiness: <https://yruz.one/x402.php>
 - Facilitators: OpenFacilitator, PayAI, Dexter (they pay the network fee; the buyer only needs USDC)
 
+## Best sellers
+
+| Endpoint | What it does | USDC |
+|---|---|---|
+| [`/api/audit`](https://yruz.one/api/examples?tool=audit) | Website audit: TLS, security headers, HTTP/2-3, SEO and AI-agent readiness, scored with fixes | 0.01 |
+| [`/api/extract`](https://yruz.one/api/examples?tool=extract) | Any web page as clean Markdown (code blocks, tables, lists) with metadata | 0.005 |
+| [`/api/domain`](https://yruz.one/api/examples?tool=domain) | DNS, SPF/DMARC/DKIM/MTA-STS, RDAP registration and TLS of a domain, scored | 0.01 |
+| [`/api/crypto/token`](https://yruz.one/api/examples?tool=crypto-token) | Solana token rug-pull check: authorities, holders, liquidity, risk score | 0.005 |
+
+**See before you pay:** <https://yruz.one/api/examples> returns a real recorded answer of every paid tool, free.
+
+## Use it over MCP
+
+The same tools are an MCP server, no auth: **`https://yruz.one/mcp/x402`** (streamable HTTP, stateless).
+Payments follow the [x402 MCP transport](https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/mcp.md):
+an unpaid `tools/call` returns `isError` with the `PaymentRequired` in `structuredContent`; repeat it with the signed
+`PaymentPayload` in `params._meta["x402/payment"]`; the receipt comes back in `result._meta["x402/payment-response"]`.
+`get_example` is free. Server card: <https://yruz.one/.well-known/mcp/x402-server-card.json>.
+
+Tools: `site_audit`, `web_extract`, `link_preview`, `domain_intel`, `broken_links`, `uptime_check`, `x402_endpoint_check`,
+`wallet_balance`, `crypto_price`, `crypto_trending`, `solana_token_check`, `solana_portfolio`, `solana_tx_explain`,
+`network_fees`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
+
 ## How to pay
 
 1. Call any endpoint (GET with query parameters or POST with a JSON body). Unpaid, it answers **HTTP 402**.
