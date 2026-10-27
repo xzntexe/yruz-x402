@@ -1,6 +1,6 @@
 # YRUZ x402 API
 
-Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on Solana or Base** (same price on both), no account, no API key, no signup. 275 paid operations, every one answering both x402 v2 (PAYMENT-REQUIRED header) and x402 v1 (JSON body), with Base and Solana offers in each 402.
+Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on Solana or Base** (same price on both), no account, no API key, no signup. 335 paid operations, every one answering both x402 v2 (PAYMENT-REQUIRED header) and x402 v1 (JSON body), with Base and Solana offers in each 402.
 
 - Discovery manifest: <https://yruz.one/.well-known/x402>
 - OpenAPI 3.1 (with `x-payment-info`): <https://yruz.one/openapi.json> (x402 operations copied to [`openapi.json`](openapi.json))
@@ -22,6 +22,22 @@ Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on S
 
 **See before you pay:** <https://yruz.one/api/examples> returns a real recorded answer of every paid tool, free.
 
+## Data Intelligence (new)
+
+Source-attributed data for agents: every answer carries `provenance` (source, record URLs, `retrieved_at`, licence), `freshness_status`, `coverage`, `warnings` and `usage`. Free catalogue with task ids, prices, limits and sources: <https://yruz.one/api/data> · source status: <https://yruz.one/api/data/sources>.
+
+| Product | Endpoints | USDC |
+|---|---|---|
+| **DependencyPulse** (npm, PyPI, Packagist + OSV) | `/api/deps/package`, `versions`, `compare`, `check`, `batch` (0.002 per package version), `tree`, `audit` (package-lock.json, composer.lock, requirements.txt ...), `advisory`, `changes`, `monitor` | 0.002-0.025 |
+| **TenderGraph** (EU TED, incl. EU-funded Serbia / Western Balkans) | `/api/tenders/search`, `notice`, `history`, `deadlines`, `awards`, `authority`, `supplier`, `changes`, `monitor` | 0.003-0.02 |
+| **RealityGraph** (Wikidata, CC0) | `/api/reality/search`, `entity`, `history` (what the source said at a past date), `compare`, `resolve`, `evidence`, `conflicts`, `monitor` | 0.003-0.02 |
+
+"No advisory" is reported as `not_affected_by_queried_advisories`, never as safe; tender values and winners only as published; entity resolution is deterministic on LEI / official website, names only rank.
+
+## Promo Board (new)
+
+List a link, API, x402 endpoint, MCP server or dataset for exactly 24 hours (`/api/promo/create`, 0.02 USDC; renew 0.01), safety-checked before payment. One global top link: a higher confirmed payment takes it over for 24 hours (`/api/promo/takeover`, minimum = current price + 0.01, from 0.05). Public leaderboards (most expensive active link, highest takeover, lifetime spend) count settled payments only. Free: <https://yruz.one/api/promo>, page <https://yruz.one/promo>.
+
 ## Use it over MCP
 
 The same tools are an MCP server, no auth: **`https://yruz.one/mcp/x402`** (streamable HTTP, stateless).
@@ -32,7 +48,7 @@ an unpaid `tools/call` returns `isError` with the `PaymentRequired` in `structur
 
 Tools: `site_audit`, `web_extract`, `company_enrich`, `url_safety_check`, `weather_forecast`, `link_preview`, `domain_intel`, `broken_links`, `uptime_check`, `x402_endpoint_check`,
 `wallet_balance`, `crypto_price`, `crypto_trending`, `solana_token_check`, `solana_portfolio`, `solana_tx_explain`,
-`network_fees`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
+`network_fees`, `deps_*` (10), `tenders_*` (9), `reality_*` (8), `promo_*` (3 paid + 6 free reads), `yruz_list_services`, `yruz_get_source_status`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
 
 ## Bad input is free
 
