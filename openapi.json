@@ -52235,7 +52235,7 @@
             "name": "url",
             "in": "query",
             "required": false,
-            "description": "Public http(s) URL to promote, https:// is added when missing (required), aliases link, website",
+            "description": "Public http(s) URL to promote, https:// is added when missing (required), aliases link, website; with an agent Bearer token or a profile x-auth-token it defaults to your YRUZ profile",
             "schema": {
               "type": "string"
             }
@@ -52419,7 +52419,7 @@
                   },
                   "url": {
                     "type": "string",
-                    "description": "Public http(s) URL to promote, https:// is added when missing (required), aliases link, website"
+                    "description": "Public http(s) URL to promote, https:// is added when missing (required), aliases link, website; with an agent Bearer token or a profile x-auth-token it defaults to your YRUZ profile"
                   },
                   "category": {
                     "type": "string",
