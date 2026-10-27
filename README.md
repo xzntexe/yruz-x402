@@ -12,19 +12,19 @@ Fast pay-per-call APIs for AI agents over **x402 v1 and v2**. Pay in **USDC on S
 
 | Endpoint | What it does | USDC |
 |---|---|---|
-| [`/api/audit`](https://yruz.one/api/examples?tool=audit) | Website audit: TLS, security headers, HTTP/2-3, SEO and AI-agent readiness, scored with fixes | 0.01 |
-| [`/api/extract`](https://yruz.one/api/examples?tool=extract) | Any web page as clean Markdown (code blocks, tables, lists) with metadata | 0.005 |
-| [`/api/enrich`](https://yruz.one/api/examples?tool=enrich) | Company profile from a domain: name, logo, socials, emails, phones, email provider, tech stack, registration | 0.01 |
-| [`/api/safety`](https://yruz.one/api/examples?tool=safety) | Is a link safe to open, sign or pay? Redirects, domain age, look-alikes, brand impersonation, wallet drainers | 0.005 |
-| [`/api/weather`](https://yruz.one/api/examples?tool=weather) | Current weather, 48 h hourly and 7-day forecast, US alerts, by place name or lat/lon | 0.003 |
-| [`/api/domain`](https://yruz.one/api/examples?tool=domain) | DNS, SPF/DMARC/DKIM/MTA-STS, RDAP registration and TLS of a domain, scored | 0.01 |
-| [`/api/crypto/token`](https://yruz.one/api/examples?tool=crypto-token) | Solana token rug-pull check: authorities, holders, liquidity, risk score | 0.005 |
+| [`/api/audit`](https://yruz.one/api/instructions?tool=audit) | Website audit: TLS, security headers, HTTP/2-3, SEO and AI-agent readiness, scored with fixes | 0.01 |
+| [`/api/extract`](https://yruz.one/api/instructions?tool=extract) | Any web page as clean Markdown (code blocks, tables, lists) with metadata | 0.005 |
+| [`/api/enrich`](https://yruz.one/api/instructions?tool=enrich) | Company profile from a domain: name, logo, socials, emails, phones, email provider, tech stack, registration | 0.01 |
+| [`/api/safety`](https://yruz.one/api/instructions?tool=safety) | Is a link safe to open, sign or pay? Redirects, domain age, look-alikes, brand impersonation, wallet drainers | 0.005 |
+| [`/api/weather`](https://yruz.one/api/instructions?tool=weather) | Current weather, 48 h hourly and 7-day forecast, US alerts, by place name or lat/lon | 0.003 |
+| [`/api/domain`](https://yruz.one/api/instructions?tool=domain) | DNS, SPF/DMARC/DKIM/MTA-STS, RDAP registration and TLS of a domain, scored | 0.01 |
+| [`/api/crypto/token`](https://yruz.one/api/instructions?tool=crypto-token) | Solana token rug-pull check: authorities, holders, liquidity, risk score | 0.005 |
 
-**See before you pay:** <https://yruz.one/api/examples> returns a real recorded answer of every paid tool, free.
+**Know before you pay:** <https://yruz.one/api/instructions> gives every paid tool's parameters, a valid request, the exact price rule, the payment steps and the response fields. Answers are returned only for a paid call.
 
 ## Data Intelligence (new)
 
-Source-attributed data for agents: every answer carries `provenance` (source, record URLs, `retrieved_at`, licence), `freshness_status`, `coverage`, `warnings` and `usage`. Free catalogue with task ids, prices, limits and sources: <https://yruz.one/api/data> · source status: <https://yruz.one/api/data/sources>.
+Source-attributed data for agents: every answer carries `provenance` (source, record URLs, `retrieved_at`, licence), `freshness_status`, `coverage`, `warnings` and `usage`. Catalogue with task ids, prices, limits and sources: <https://yruz.one/api/data> · source status: <https://yruz.one/api/data/sources>.
 
 | Product | Endpoints | USDC |
 |---|---|---|
@@ -36,7 +36,7 @@ Source-attributed data for agents: every answer carries `provenance` (source, re
 
 ## Promo Board (new)
 
-List a link, API, x402 endpoint, MCP server or dataset for exactly 24 hours (`/api/promo/create`, 0.02 USDC; renew 0.01), safety-checked before payment. One global top link: a higher confirmed payment takes it over for 24 hours (`/api/promo/takeover`, minimum = current price + 0.01, from 0.05). Public leaderboards (most expensive active link, highest takeover, lifetime spend) count settled payments only. Free: <https://yruz.one/api/promo>, page <https://yruz.one/promo>.
+List a link, API, x402 endpoint, MCP server or dataset for exactly 24 hours (`/api/promo/create`, 0.02 USDC; renew 0.01), safety-checked before payment. Send `title` and `url` (category and type optional) and keep the returned `id` and `owner_token`. One global top link: a higher confirmed payment takes it over for 24 hours (`/api/promo/takeover`, minimum = current price + 0.01, from 0.05). Public leaderboards (most expensive active link, highest takeover, lifetime spend) count settled payments only. Free: <https://yruz.one/api/promo>, page <https://yruz.one/promo>.
 
 ## Use it over MCP
 
@@ -44,26 +44,26 @@ The same tools are an MCP server, no auth: **`https://yruz.one/mcp/x402`** (stre
 Payments follow the [x402 MCP transport](https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/mcp.md):
 an unpaid `tools/call` returns `isError` with the `PaymentRequired` in `structuredContent`; repeat it with the signed
 `PaymentPayload` in `params._meta["x402/payment"]`; the receipt comes back in `result._meta["x402/payment-response"]`.
-`get_example` is free. Listed in the official MCP Registry as `io.github.xzntexe/yruz-x402`. Server card: <https://yruz.one/.well-known/mcp/x402-server-card.json>.
+`get_example` returns the instructions of any tool (no answer data). Listed in the official MCP Registry as `io.github.xzntexe/yruz-x402`. Server card: <https://yruz.one/.well-known/mcp/x402-server-card.json>.
 
 Tools: `site_audit`, `web_extract`, `company_enrich`, `url_safety_check`, `weather_forecast`, `link_preview`, `domain_intel`, `broken_links`, `uptime_check`, `x402_endpoint_check`,
 `wallet_balance`, `crypto_price`, `crypto_trending`, `solana_token_check`, `solana_portfolio`, `solana_tx_explain`,
-`network_fees`, `deps_*` (10), `tenders_*` (9), `reality_*` (8), `promo_*` (3 paid + 6 free reads), `yruz_list_services`, `yruz_get_source_status`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
+`network_fees`, `deps_*` (10), `tenders_*` (9), `reality_*` (8), `promo_*` (3 paid + 6 board reads), `yruz_list_services`, `yruz_get_source_status`, `get_example`. See [`examples/mcp-client.mjs`](examples/mcp-client.mjs).
 
-## Bad input is free
+## Bad input gets instructions, never a charge
 
-Every refused call (HTTP 400/404/422) is free and says how to succeed: `charged: false`, the endpoint, its parameters, a valid example call, the price and the docs. Unknown paths suggest the closest tool (`/api/extractt` -> `/api/extract`).
+Every refused call (HTTP 400/403/404/409/422) is not charged and carries an `instructions` block: what you sent, the missing required fields, unknown fields, a valid GET and POST request, the payment steps and a link to the full instructions of the tool. Unknown paths suggest the closest tool (`/api/extractt` -> `/api/extract`).
 
 ## How to pay
 
 1. Call any endpoint (GET with query parameters or POST with a JSON body). Unpaid, it answers **HTTP 402**.
 2. **x402 v2** clients read the base64 `PAYMENT-REQUIRED` header and resend with `PAYMENT-SIGNATURE`. **x402 v1** clients read the JSON body (`accepts`) and resend with `X-PAYMENT`.
 3. Every 402 offers Base (`eip155:8453`) and Solana (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). The payment is bound to the exact input, so change nothing between the 402 and the paid retry.
-4. Invalid or private input is refused with a free **400** before any payment. Receipts come back in `PAYMENT-RESPONSE` / `X-PAYMENT-RESPONSE`.
+4. Invalid or private input is refused before any payment with instructions for the correct call. Receipts come back in `PAYMENT-RESPONSE` / `X-PAYMENT-RESPONSE`.
 
 ## Crypto tools
 
-Market data cached at most 60 s. Free catalogue: [`/api/crypto`](https://yruz.one/api/crypto).
+Market data cached at most 60 s. Catalogue: [`/api/crypto`](https://yruz.one/api/crypto).
 
 | Endpoint | What it does | USDC |
 |---|---|---|
